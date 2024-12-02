@@ -10,7 +10,7 @@ class ApiKey extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'photo',
-        'office_space_id'
+        'name',
+        'key'
     ];
 }

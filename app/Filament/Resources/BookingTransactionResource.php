@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Select;
 
 class BookingTransactionResource extends Resource
 {
@@ -26,10 +27,46 @@ class BookingTransactionResource extends Resource
     {
         return $form
             ->schema([
-                Tables\Columns\TextColumn::make('name')
-                ->searchable(),
-                Tables\Columns\TextColumn::make('phone_number')
-                ->searchable(),
+                Forms\Components\TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+                
+                Forms\Components\TextInput::make('phone_number')
+                ->required()
+                ->maxLength(255),
+                Forms\Components\TextInput::make('booking_trx_id')
+                ->required()
+                ->maxLength(255),
+                Forms\Components\TextInput::make('total_amount')
+                ->required()
+                ->numeric(255)
+                ->prefix('IDR'),
+                Forms\Components\TextInput::make('duration')
+                ->required()
+                ->numeric()
+                ->prefix('Days'),
+                Forms\Components\DatePicker::make('started_at')
+                ->required(),
+                Forms\Components\DatePicker::make('ended_at')
+                ->required(),
+                Forms\Components\Select::make('is_pain')
+                ->options([
+                    true => 'Paid',
+                    false => 'Not Paid', 
+                    
+                    
+                ])
+                ->required(),
+
+
+                Forms\Components\Select::make('office_space_id')
+                ->relationship('officeSpace','name')
+                ->searchable()
+                ->preload()
+                ->required(),
+               
+               
+                
 
             ]);
     }
@@ -38,7 +75,11 @@ class BookingTransactionResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+                Tables\Columns\TextColumn::make('officeSpace.name'),
+                Tables\Columns\TextColumn::make('booking_trx_id')
+                ->searchable(),
             ])
             ->filters([
                 //

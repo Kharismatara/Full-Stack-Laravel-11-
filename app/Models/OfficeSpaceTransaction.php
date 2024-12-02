@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OfficeSpaceTransaction extends Model
@@ -13,8 +14,8 @@ class OfficeSpaceTransaction extends Model
         'name',
         'phone_number',
         'booking_trx_id',
-        'is_paid',
-        'statrted_at',
+        'is_pain',
+        'started_at',
         'total_amount',
         'duration',
         'ended_at',
@@ -23,4 +24,8 @@ class OfficeSpaceTransaction extends Model
         
 
     ];
+
+    public function OfficeSpace(): BelongsTo{
+        return $this->belongsTo(OfficeSpace::class);
+    }
 }
