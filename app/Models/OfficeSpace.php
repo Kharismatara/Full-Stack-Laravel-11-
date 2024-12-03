@@ -38,6 +38,7 @@ class OfficeSpace extends Model
     public function benefits(): HasMany{
         return $this->hasMany(OfficeSpaceBenefit::class);
     }
+
     public function city(): BelongsTo{
         return $this->belongsTo(City::class);
     }
