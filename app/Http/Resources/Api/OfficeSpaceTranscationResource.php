@@ -14,6 +14,18 @@ class OfficeSpaceTranscationResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id'=>$this-> id,
+            'name'=>$this->name,
+            'phone_number'=>$this->phone_number,
+            'booking_trx_id'=>$this->booking_trx_id,
+            'is_pain'=>$this-> is_pain,
+            'duration'=>$this->name,
+            'total_amount'=>$this-> total_amount,
+            'started_at'=>$this->started_at,
+            'ended_at'=>$this-> ended_at,
+            'officeSpace'=>$this->whenLoaded('officeSpace')
+
+        ];
     }
 }

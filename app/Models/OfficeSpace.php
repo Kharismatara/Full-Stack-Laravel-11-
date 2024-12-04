@@ -31,7 +31,7 @@ class OfficeSpace extends Model
         $this->attributes['slug']= Str::slug($value);
     }
 
-    public function photo(): HasMany{
+    public function photos(): HasMany{
         return $this->hasMany(OfficeSpacePhoto::class);
     }
 
