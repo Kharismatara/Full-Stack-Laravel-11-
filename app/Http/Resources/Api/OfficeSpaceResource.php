@@ -25,10 +25,8 @@ class OfficeSpaceResource extends JsonResource
             'thumbnail'=> $this->thumbnail,
             'about'=> $this->about,
             'city'=> new CityResource($this->whenLoaded('city')),
-            'photos'=> OfficeSpacePhotoResource::collection($this->hasPivotLoaded('photos')),
-            'benetifts' => OfficeSpacePhotoResource::collection($this->whenLoaded('benefits'))
-            
-            
+          'photos' => OfficeSpacePhotoResource::collection($this->whenLoaded('photos')), // Perbaikan
+            'benefits' => OfficeSpacePhotoResource::collection($this->whenLoaded('benefits')), // Perbaikan    
         ];
     }
 }

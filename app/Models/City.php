@@ -19,7 +19,10 @@ class City extends Model
         'photo',
     ];
 
-    public function officeSpaces(): HasMany{
-        return $this->hasMany(OfficeSpace::class);
-    }
+
+    public function officeSpaces(): HasMany
+{
+    return $this->hasMany(OfficeSpace::class);
+
+}
 }

@@ -20,8 +20,9 @@ class CityResource extends JsonResource
             'name'=> $this->name,
             'slug'=> $this->slug,
             'photo'=> $this->photo,
-            'officeSpace_count' => $this->office_space_count,
-            'officeSpace'=> OfficeSpace::collection($this->whenLoaded('officeSpace'))
+           'officeSpace_count' => $this->office_spaces_count, // Menggunakan nama kolom yang benar
+'officeSpaces' => OfficeSpaceResource::collection($this->whenLoaded('officeSpaces')), // Gunakan nama relasi yang benar
+
 
 
         ];
